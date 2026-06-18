@@ -1,258 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jurnal Trading - Akun Cent Cloud</title>
     <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f7f6;
-        color: #333;
-        padding: 20px;
-      }
-      h1,
-      h3 {
-        text-align: center;
-        color: #2c3e50;
-      }
-      .container {
-        max-width: 1100px;
-        margin: auto;
-      }
-      .card {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-      }
-      .grid-form {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-      }
-      .form-group {
-        display: flex;
-        flex-direction: column;
-      }
-      label {
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #34495e;
-      }
-      input,
-      select,
-      button {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-      }
-      button {
-        background-color: #27ae60;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        margin-top: 10px;
-        width: 100%;
-        transition: 0.3s;
-      }
-      button:hover {
-        background-color: #219150;
-      }
-      .btn-danger {
-        background-color: #e74c3c;
-        width: auto;
-        padding: 5px 10px;
-      }
-      .btn-danger:hover {
-        background-color: #c0392b;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-        font-size: 14px;
-      }
-      th,
-      td {
-        border: 1px solid #ecf0f1;
-        padding: 12px;
-        text-align: center;
-      }
-      th {
-        background-color: #34495e;
-        color: white;
-      }
-      .profit {
-        color: #27ae60;
-        font-weight: bold;
-      }
-      .loss {
-        color: #e74c3c;
-        font-weight: bold;
-      }
-      .neutral {
-        color: #7f8c8d;
-        font-weight: bold;
-      }
-      .summary {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        background-color: #e8f8f5;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-      .summary-row {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        font-size: 16px;
-        border-bottom: 1px dashed #bdc3c7;
-        padding-bottom: 10px;
-      }
-      .summary-row:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-        font-size: 18px;
-      }
-      #kurs-info {
-        text-align: center;
-        font-size: 12px;
-        color: #7f8c8d;
-        margin-top: -15px;
-        margin-bottom: 15px;
-      }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; padding: 20px; }
+        h1, h3 { text-align: center; color: #2c3e50; }
+        .container { max-width: 1100px; margin: auto; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .grid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 14px; font-weight: bold; margin-bottom: 5px; color: #34495e; }
+        input, select, button { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        button { background-color: #27ae60; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; width: 100%; transition: 0.3s; }
+        button:hover { background-color: #219150; }
+        .btn-danger { background-color: #e74c3c; width: auto; padding: 5px 10px; }
+        .btn-danger:hover { background-color: #c0392b; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+        th, td { border: 1px solid #ecf0f1; padding: 12px; text-align: center; }
+        th { background-color: #34495e; color: white; }
+        .profit { color: #27ae60; font-weight: bold; }
+        .loss { color: #e74c3c; font-weight: bold; }
+        .neutral { color: #7f8c8d; font-weight: bold; }
+        .summary { display: flex; flex-direction: column; gap: 10px; background-color: #e8f8f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .summary-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; border-bottom: 1px dashed #bdc3c7; padding-bottom: 10px; }
+        .summary-row:last-child { border-bottom: none; padding-bottom: 0; font-size: 18px; }
+        #kurs-info { text-align: center; font-size: 12px; color: #7f8c8d; margin-top: -15px; margin-bottom: 15px; }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>📊 Jurnal Trading Cloud (Akun Cent)</h1>
-      <div id="kurs-info">Memuat data kurs live...</div>
+</head>
+<body>
 
-      <div class="summary">
+<div class="container">
+    <h1>📊 Jurnal Trading Cloud (Akun Cent)</h1>
+    <div id="kurs-info">Memuat data kurs live...</div>
+
+    <div class="summary">
         <div class="summary-row">
-          <span style="color: #34495e">Modal Awal:</span>
-          <span
-            ><span id="displayModalCents">0.00</span> USC &nbsp;|&nbsp; $<span
-              id="displayModalUSD"
-              >0.000</span
-            >
-            &nbsp;|&nbsp; <span id="displayModalIDR">Rp 0</span></span
-          >
+            <span style="color: #34495e;">Modal Awal:</span>
+            <span><span id="displayModalCents">0.00</span> USC &nbsp;|&nbsp; $<span id="displayModalUSD">0.000</span> &nbsp;|&nbsp; <span id="displayModalIDR">Rp 0</span></span>
         </div>
         <div class="summary-row">
-          <span style="color: #2980b9">Total P/L Bersih (Profit - Loss):</span>
-          <span id="containerNetPL"
-            ><span id="displayNetCents">0.00</span> USC &nbsp;|&nbsp; $<span
-              id="displayNetUSD"
-              >0.000</span
-            >
-            &nbsp;|&nbsp; <span id="displayNetIDR">Rp 0</span></span
-          >
+            <span style="color: #2980b9;">Total P/L Bersih (Profit - Loss):</span>
+            <span id="containerNetPL"><span id="displayNetCents">0.00</span> USC &nbsp;|&nbsp; $<span id="displayNetUSD">0.000</span> &nbsp;|&nbsp; <span id="displayNetIDR">Rp 0</span></span>
         </div>
-        <div class="summary-row" style="color: #2c3e50">
-          <span>Saldo Akhir:</span>
-          <span
-            ><span id="displaySaldoCents">0.00</span> USC &nbsp;|&nbsp; $<span
-              id="displaySaldoUSD"
-              >0.000</span
-            >
-            &nbsp;|&nbsp; <span id="displaySaldoIDR">Rp 0</span></span
-          >
+        <div class="summary-row" style="color: #2c3e50;">
+            <span>Saldo Akhir:</span>
+            <span><span id="displaySaldoCents">0.00</span> USC &nbsp;|&nbsp; $<span id="displaySaldoUSD">0.000</span> &nbsp;|&nbsp; <span id="displaySaldoIDR">Rp 0</span></span>
         </div>
-      </div>
-
-      <div class="card">
-        <h3>Input Transaksi Baru</h3>
-        <div class="grid-form">
-          <div class="form-group">
-            <label>Tanggal</label>
-            <input type="date" id="tanggal" required />
-          </div>
-          <div class="form-group">
-            <label>Pair / Aset</label>
-            <input
-              type="text"
-              id="pair"
-              placeholder="Contoh: XAUUSD"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label>Posisi</label>
-            <select id="posisi">
-              <option value="Buy">Buy</option>
-              <option value="Sell">Sell</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Lot</label>
-            <input
-              type="number"
-              step="0.01"
-              id="lot"
-              placeholder="0.01"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label>Profit/Loss (Cents)</label>
-            <input
-              type="number"
-              step="0.01"
-              id="plCents"
-              placeholder="Contoh: 1.60 atau -2.50"
-              required
-            />
-          </div>
-          <div class="form-group" style="grid-column: 1 / -1">
-            <label>Catatan / Evaluasi</label>
-            <input
-              type="text"
-              id="catatan"
-              placeholder="Alasan entry atau evaluasi trade ini..."
-            />
-          </div>
-        </div>
-        <button id="btnSimpan">Simpan Transaksi</button>
-        <button
-          id="btnReset"
-          class="btn-danger"
-          style="margin-top: 15px; background-color: #95a5a6"
-        >
-          Reset Semua Data
-        </button>
-      </div>
-
-      <div class="card" style="overflow-x: auto">
-        <h3>Riwayat Transaksi</h3>
-        <table id="tabelJurnal">
-          <thead>
-            <tr>
-              <th>Tanggal</th>
-              <th>Pair</th>
-              <th>Lot</th>
-              <th>Posisi</th>
-              <th>P/L (Cents)</th>
-              <th>P/L (USD)</th>
-              <th>P/L (IDR)</th>
-              <th>Catatan</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
     </div>
 
-    <script type="module">
-  // Import the functions you need from the SDKs you need
+    <div class="card">
+        <h3>Input Transaksi Baru</h3>
+        <div class="grid-form">
+            <div class="form-group">
+                <label>Tanggal</label>
+                <input type="date" id="tanggal" required>
+            </div>
+            <div class="form-group">
+                <label>Pair / Aset</label>
+                <input type="text" id="pair" placeholder="Contoh: XAUUSD" required>
+            </div>
+            <div class="form-group">
+                <label>Posisi</label>
+                <select id="posisi">
+                    <option value="Buy">Buy</option>
+                    <option value="Sell">Sell</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Lot</label>
+                <input type="number" step="0.01" id="lot" placeholder="0.01" required>
+            </div>
+            <div class="form-group">
+                <label>Profit/Loss (Cents)</label>
+                <input type="number" step="0.01" id="plCents" placeholder="Contoh: 1.60 atau -2.50" required>
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+                <label>Catatan / Evaluasi</label>
+                <input type="text" id="catatan" placeholder="Alasan entry atau evaluasi trade ini...">
+            </div>
+        </div>
+        <button id="btnSimpan">Simpan Transaksi</button>
+        <button id="btnReset" class="btn-danger" style="margin-top: 15px; background-color: #95a5a6;">Reset Semua Data</button>
+    </div>
+
+    <div class="card" style="overflow-x: auto;">
+        <h3>Riwayat Transaksi</h3>
+        <table id="tabelJurnal">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Pair</th>
+                    <th>Lot</th>
+                    <th>Posisi</th>
+                    <th>P/L (Cents)</th>
+                    <th>P/L (USD)</th>
+                    <th>P/L (IDR)</th>
+                    <th>Catatan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
   // TODO: Add SDKs for Firebase products that you want to use
@@ -273,6 +129,127 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+
+    const modalAwalCents = 1270.00; 
+    let kursUSD = 16200; // Kurs fallback jika API bermasalah
+
+    function formatIDR(angka) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angka);
+    }
+
+    // Fungsi fetch Kurs Live
+    function ambilKursLive() {
+        fetch('https://open.er-api.com/v6/latest/USD')
+            .then(response => response.json())
+            .then(data => {
+                kursUSD = data.rates.IDR;
+                document.getElementById("kurs-info").innerText = `Kurs Live Terkini: 1 USD = ${formatIDR(kursUSD)}`;
+                perbaruiTampilan(globalSnapshotData);
+            })
+            .catch(error => {
+                console.error("Gagal mengambil data kurs live:", error);
+                document.getElementById("kurs-info").innerText = `Gagal memuat kurs live. Menggunakan kurs standar: 1 USD = ${formatIDR(kursUSD)}`;
+            });
+    }
+
+    let globalSnapshotData = null;
+
+    // Mendengarkan data dari Firebase
+    onValue(dbRef, (snapshot) => {
+        globalSnapshotData = snapshot.val();
+        perbaruiTampilan(globalSnapshotData);
+    });
+
+    function perbaruiTampilan(data) {
+        const tbody = document.querySelector("#tabelJurnal tbody");
+        tbody.innerHTML = "";
+        
+        let totalNetCents = 0; // Menampung hasil penambahan profit & pengurangan loss
+
+        if (data) {
+            Object.keys(data).forEach((key) => {
+                let t = data[key];
+                let cents = parseFloat(t.plCents);
+                totalNetCents += cents;
+                
+                let plUSD = (cents / 100).toFixed(3); // Tampilan 3 desimal agar presisi
+                let plIDR = formatIDR((cents / 100) * kursUSD);
+                
+                let kelasWarna = cents >= 0 ? "profit" : "loss";
+                let simbol = cents > 0 ? "+" : "";
+
+                let row = `<tr>
+                    <td>${t.tanggal}</td>
+                    <td><b>${t.pair.toUpperCase()}</b></td>
+                    <td>${t.lot}</td>
+                    <td>${t.posisi}</td>
+                    <td class="${kelasWarna}">${simbol}${cents.toFixed(2)}</td>
+                    <td class="${kelasWarna}">${simbol}$${plUSD}</td>
+                    <td class="${kelasWarna}">${simbol}${plIDR}</td>
+                    <td>${t.catatan}</td>
+                    <td><button class="btn-danger" onclick="hapusTransaksi('${key}')">Hapus</button></td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        let saldoAkhirCents = modalAwalCents + totalNetCents;
+
+        // Atur Kelas Warna untuk Total P/L Bersih kumulatif
+        const containerNetPL = document.getElementById("containerNetPL");
+        containerNetPL.className = totalNetCents > 0 ? "profit" : (totalNetCents < 0 ? "loss" : "neutral");
+        let simbolNet = totalNetCents > 0 ? "+" : "";
+
+        // Update Tampilan Ringkasan Atas
+        document.getElementById("displayModalCents").innerText = modalAwalCents.toFixed(2);
+        document.getElementById("displayModalUSD").innerText = (modalAwalCents / 100).toFixed(3);
+        document.getElementById("displayModalIDR").innerText = formatIDR((modalAwalCents / 100) * kursUSD);
+
+        document.getElementById("displayNetCents").innerText = simbolNet + totalNetCents.toFixed(2);
+        document.getElementById("displayNetUSD").innerText = simbolNet + (totalNetCents / 100).toFixed(3);
+        document.getElementById("displayNetIDR").innerText = simbolNet + formatIDR((totalNetCents / 100) * kursUSD);
+
+        document.getElementById("displaySaldoCents").innerText = saldoAkhirCents.toFixed(2);
+        document.getElementById("displaySaldoUSD").innerText = (saldoAkhirCents / 100).toFixed(3);
+        document.getElementById("displaySaldoIDR").innerText = formatIDR((saldoAkhirCents / 100) * kursUSD);
+    }
+
+    // Aksi Simpan
+    document.getElementById("btnSimpan").addEventListener("click", () => {
+        let tanggal = document.getElementById("tanggal").value;
+        let pair = document.getElementById("pair").value;
+        let posisi = document.getElementById("posisi").value;
+        let lot = document.getElementById("lot").value;
+        let plCents = parseFloat(document.getElementById("plCents").value);
+        let catatan = document.getElementById("catatan").value;
+
+        if(!tanggal || !pair || !lot || isNaN(plCents)) {
+            alert("Mohon lengkapi seluruh kolom wajib!");
+            return;
+        }
+
+        push(dbRef, { tanggal, pair, posisi, lot, plCents, catatan });
+        
+        document.getElementById("pair").value = "";
+        document.getElementById("plCents").value = "";
+        document.getElementById("catatan").value = "";
+    });
+
+    window.hapusTransaksi = function(key) {
+        if(confirm("Hapus transaksi ini?")) {
+            remove(ref(db, `jurnal_trading/${key}`));
+        }
+    }
+
+    document.getElementById("btnReset").addEventListener("click", () => {
+        if(confirm("Hapus seluruh riwayat di cloud secara permanen?")) {
+            set(dbRef, null);
+        }
+    });
+
+    // Jalankan pengambilan kurs saat halaman terbuka
+    window.onload = ambilKursLive;
 </script>
-  </body>
+
+</body>
 </html>
